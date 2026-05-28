@@ -150,6 +150,8 @@ class Crop extends StatelessWidget {
 
   /// The rendering quality of the image
   final FilterQuality filterQuality;
+  final int? cacheHeight;
+  final int? cacheWidth;
 
   Crop({
     super.key,
@@ -178,6 +180,8 @@ class Crop extends StatelessWidget {
     this.scrollZoomSensitivity = 0.05,
     this.overlayBuilder,
     this.filterQuality = FilterQuality.medium,
+    this.cacheHeight,
+    this.cacheWidth,
   })  : this.imageParser = imageParser ?? defaultImageParser,
         this.formatDetector = formatDetector ?? defaultFormatDetector;
 
@@ -217,6 +221,8 @@ class Crop extends StatelessWidget {
             imageParser: imageParser,
             overlayBuilder: overlayBuilder,
             filterQuality: filterQuality,
+            cacheHeight: cacheHeight,
+            cacheWidth: cacheWidth,
           ),
         );
       },
@@ -250,6 +256,8 @@ class _CropEditor extends StatefulWidget {
   final double scrollZoomSensitivity;
   final OverlayBuilder? overlayBuilder;
   final FilterQuality filterQuality;
+  final int? cacheHeight;
+  final int? cacheWidth;
 
   const _CropEditor({
     super.key,
@@ -278,6 +286,8 @@ class _CropEditor extends StatefulWidget {
     required this.scrollZoomSensitivity,
     this.overlayBuilder,
     required this.filterQuality,
+    this.cacheHeight,
+    this.cacheWidth,
   });
 
   @override
@@ -638,6 +648,8 @@ class _CropEditorState extends State<_CropEditor> {
                             height: _readyState.imageRect.height,
                             fit: BoxFit.contain,
                             filterQuality: widget.filterQuality,
+                            cacheHeight: widget.cacheHeight,
+                            cacheWidth: widget.cacheWidth,
                           ),
                         ),
                       ],
